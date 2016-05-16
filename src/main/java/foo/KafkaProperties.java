@@ -1,7 +1,7 @@
 package foo;
 
 public interface KafkaProperties {
-	final static String zkConnect = "192.168.131.137:2181";
+	final static String zkConnect = "192.168.131.137:2181,192.168.131.138:2181";
 	final static String groupId = "group1";
 	final static String topic = "testTopic";
 	final static String kafkaServerURL = "192.168.131.137";

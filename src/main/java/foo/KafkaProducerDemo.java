@@ -1,9 +1,20 @@
 package foo;
 
 
-public class KafkaProducerDemo implements KafkaProperties{ 
+import java.util.concurrent.TimeUnit;
+
+public class KafkaProducerDemo implements KafkaProperties{
     public static void main(String[] args){
-        StartThread(1,"testTopic",10);
+        int i=0;
+        while (true) {
+            i++;
+            StartThread(1, "testTopic", 10*i);
+            try {
+                TimeUnit.SECONDS.sleep(5);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
     }
     /**
      * @param numsOfProducer  生产者的数目
@@ -16,5 +27,7 @@ public class KafkaProducerDemo implements KafkaProperties{
             String name = "Producer" + i;
             new Producer(name,topic,numsOfMessage).start();    
         }
+
+
     }
 }
